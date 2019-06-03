@@ -29,5 +29,6 @@ urlpatterns = [
     path('plancelo/', include('apps.controlCelo.urls')),
     path('plandesparasitante/', include('apps.controlDesp.urls')),
     
+    
 
 ]
