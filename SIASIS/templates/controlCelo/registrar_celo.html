@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<!--start-about-->
+<div class="news" style="padding:0">
+<div class="container" style="background-color:white">
+<form method="POST" class="post-form" action="/plancelo/ingresar-celo">  
+        {% csrf_token %}  
+<div class="container"align="center">  
+<br>  
+  <div class="form-group row">  
+    <label class="col col-form-label"></label>  
+    <div class="col">  
+    <h3>Ingresar celo</h3>  
+    </div>  
+  </div>  
+  <div class="form-group row" align="center">  
+	{{ form.fechaInicioCelo.errors }}
+    <label class="col-sm-4">Fecha de Inicio de celo:</label>  
+    <div class="col-sm-3">  
+      {{ form.fechaInicioCelo }}  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-4 col-form-label">Fecha de fin de celo:</label>  
+    <div class="col-sm-3">  
+      {{ form.fechaFinCelo }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-4 col-form-label">Fecha de Aplicacion:</label>  
+    <div class="col-sm-3">  
+      {{ form.fechaAplic }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-4 col-form-label">Celo No:</label>  
+    <div class="col-sm-3">  
+      {{ form.celo }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col col-form-label"></label>  
+    <div class="col">  
+    <button type="submit" class="btn btn-primary">Enviar</button>  
+    </div>  
+  </div>  
+    </div>  
+</form> 
+	<div class="clearfix"></div>
+</div>	 
+</div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath1" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath2" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
+{% endblock %}

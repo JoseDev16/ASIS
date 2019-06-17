@@ -1,0 +1,130 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="health-care" style="padding-top:2%; padding-bottom:0;">
+	
+	<div class="container" style="background-color:rgba(255, 255, 255, 0.2);" >
+    <div class="col"align="center" style="padding-bottom:1%">  
+    <h3>Listado de Celos por</h3>  
+    </div>  
+		<table class="table table-striped table-bordered table-sm">  
+			<thead class="thead-dark">  
+				<tr>  
+					<th>No. Celo</th>  
+					<th>Fecha de inicio</th>  
+					<th>Fecha de fin</th>  
+					<th>Fecha de aplicación</th>  
+					<th>Vacuna</th>   
+					<th>Acciones</th>  
+				</tr>  
+			</thead> 
+			<tbody>  
+			{% for celo in varcelos %}  
+				<tr>  
+					<td>{{ celo.id }}</td>  
+					<td>{{ celo.fechaInicioCelo }}</td>  
+					<td>{{ celo.fechaFinCelo }}</td>  
+					<td>{{ celo.fechaAplic }}</td>  
+					<td>{{ celo.celo }}</td>  
+					<td>  
+						<a href="{% url 'controlCelo:editar-celo' celo.id %}#new">Actualizar</a>  
+						<a href="{% url 'controlCelo:eliminar-celo' celo.id %}">Eliminar</a>  
+					</td>  
+				</tr>  
+			{% endfor %}  
+			</tbody>  
+		</table>
+				{% csrf_token %}  
+		<div class="clearfix"></div>
+	</div>	 
+</div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath3" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath4" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
+<br>
+<!--start-about-->
+<div class="news" id="new" style="padding-top:0">
+<div class="container" style="background-color:rgba(255, 255, 255, 0.2);position:relative;">
+<form method="POST" class="post-form" action="
+{% if edicion %}
+/plancelo/editar-celo/{{form.instance.id}}
+{% else %}
+/plancelo/index-celo/
+{% endif %}
+">  
+        {% csrf_token %}  
+<div class="container"align="center">  
+<br>  
+  <div class="form-group row">  
+    <label class="col col-form-label"></label>  
+    <div class="col">  
+    <h3>
+	{% if edicion %}
+	Editar celo
+	{% else %}
+	Ingresar celo
+	{% endif %}
+	</h3>  
+    </div>  
+  </div>  
+  <div class="form-group row">   
+    <label class="col-sm-5 col-form-label">N° Celo:</label>  
+    <div class="col-sm-4">  
+      {{ form.instance.id }}  
+    </div>  
+  </div>  
+  <div class="form-group row" align="center">  
+	{{ form.fechaInicioCelo.errors }}
+    <label class="col-sm-5">Fecha de Inicio de celo:</label>  
+    <div class="col-sm-4">  
+      {{ form.fechaInicioCelo }}  
+    </div>  
+  </div>  
+  <div class="form-group row"> 
+      {{ form.fechaFinCelo.errors }}   
+    <label class="col-sm-5 col-form-label">Fecha de fin de celo:</label>  
+    <div class="col-sm-4">  
+      {{ form.fechaFinCelo }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+      {{ form.fechaAplic.errors }}  
+    <label class="col-sm-5 col-form-label">Fecha de Aplicacion:</label>  
+    <div class="col-sm-4">  
+      {{ form.fechaAplic }}  
+    </div>  
+  </div>  
+    <div class="form-group row"> 
+      {{ form.celo.errors }}   
+    <label class="col-sm-5 col-form-label">Vacuna:</label>  
+    <div class="col-sm-4">  
+      {{ form.celo }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col col-form-label"></label>  
+    <div class="col">  
+    <button type="submit" class="btn btn-primary">Enviar</button>  
+    </div>  
+  </div>  
+    </div>  
+</form> 
+
+	<form action="/plancelo/registrar-vacuna-celo/" method="POST">
+	{% csrf_token %}  
+		<button type="submit" class="btn btn-primary">Ingresar vacuna</button>  
+	</form> 
+	<div class="clearfix"></div>
+	{% if edicion %}
+	<form action="/plancelo/index-celo/" method="POST">
+	{% csrf_token %}  
+		<button type="submit" class="btn btn-primary">Cancelar</button>  
+	</form> 
+	{% endif %}
+</div>	 
+</div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath1" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath2" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
+{% endblock %}
