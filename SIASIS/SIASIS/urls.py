@@ -28,7 +28,7 @@ urlpatterns = [
     path('planvacunacion/', include('apps.controlVacunas.urls')),
     path('plancelo/', include('apps.controlCelo.urls')),
     path('plandesparasitante/', include('apps.controlDesp.urls')),
-    
+    path('registromascota/', include('apps.registroMascota.urls')),
     
 
 ]

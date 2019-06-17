@@ -10,6 +10,8 @@ class Mascota(models.Model):
     razaPadre = models.CharField(max_length = 30)
     razaMadre = models.CharField(max_length = 30)
     peso = models.FloatField()
+    def __str__(self):
+        return self.nombre
     
 
 

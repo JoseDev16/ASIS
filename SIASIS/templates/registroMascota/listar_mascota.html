@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="col"align="center" style="padding-bottom:1%">  
+    <h3>Listado de Mascotas</h3>  
+ </div>  
+<table class="table table-bordered">  
+	<thead class="thead-dark">  
+		<tr>
+			<th>No. Mascota</th>
+			<th>Nombre</th>
+			<th>Raza</th>
+			<th>Sexo</th>
+			<th>Fecha de nacimiento</th>
+			<th>Raza del padre</th>
+			<th>Raza de la madre</th>
+			<th>Peso (kg)</th>
+			<th>Acciones</th>
+		</tr>  
+	</thead> 
+	<tbody>  
+		{% if mascotas %}
+		{% for mascota in mascotas %}  
+		<tr>  
+			<td>{{ mascota.id }}</td>  
+			<td>{{ mascota.nombre }}</td>  
+			<td>{{ mascota.raza }}</td>  
+			<td>{{ mascota.sexo }}</td>  
+			<td>{{ mascota.fechaNacimiento }}</td>
+			<td>{{ mascota.razaPadre }}</td>  
+			<td>{{ mascota.razaMadre }}</td>  
+			<td>{{ mascota.peso }}</td>
+			<td>
+				<a class="btn btn-primary" href="{% url 'registroMascota:editar-mascota' mascota.id %}">Editar</a>
+				<a class="btn btn-danger" href="{% url 'registroMascota:eliminar-mascota' mascota.id %}">Eliminar</a>
+			</td>
+		</tr>  
+		{% endfor %}
+		{% else %}
+		<<h1>No hay registro de mascotas</h1>
+		{% endif %}  
+	</tbody>  
+</table>
+{% endblock %}
