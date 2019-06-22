@@ -77,7 +77,16 @@ def registro_full (request):
                 instance2.save()
 
             if 'btnGuardar' in request.POST:
-                dueno = 
+                dueno = DueñoMascota.objects.lastest('id')
+                dueno.cuenta_id = id_cuenta.id
+                dueno.save()
+                form.save_m2m()
+                return redirect('registroMascota:listar-mascota')
+    context={
+		'form': form,
+		
+		}
+    return render (request,'registroMascota: listar-mascota',context)
 
 
 

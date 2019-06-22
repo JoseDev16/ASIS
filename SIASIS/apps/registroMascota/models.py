@@ -23,10 +23,11 @@ class DueñoMascota (models.Model):
     telefono = models.IntegerField()
     celular = models.IntegerField()
     correo = models.EmailField()
-    cuenta = models.ForeignKey(User, null = True, blank = True, on_delete = models.CASCADE)
+    cuenta = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     
 
 class Expediente(models.Model):
     inicioControl = models.DateField(auto_now_add = True)
     mascota = models.ForeignKey(Mascota, null= True, blank = True, on_delete = models.CASCADE)
     dueñomascota = models.ForeignKey(DueñoMascota, null = True, blank = True, on_delete = models.CASCADE)
+

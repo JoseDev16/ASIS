@@ -1,68 +1,11 @@
+{% extends 'base/base.html' %}
 
-
-
-
-
-
-<form method="post" class="CuentaForm" data-url='/registrar/registrar-due'>
-		{% csrf_token %}
-	<div class="col-md-10">
-		<hr>
-			<strong>Datos de la cuenta</strong>
-		<hr>
+{% block content %}
+	<div class="container"align="center">
+		<form method="post">
+			{% csrf_token %}
+				{{form.as_p}}
+		</form>
 	</div>
-		<div class="row">
-  			<div class="col-md-10">
-    			<div class="row">
-      				<div class="col-md-6">
-        				<label>Nombres</label>
-				<input class="form-control" type="text" name="first_name" id="id_cuenta_nombre" required>
-      				</div>
-      				<div class="col-md-6">
-        				<label >Apellidos</label>
-				<input class="form-control" type="text" name="last_name" id="id_cuenta_apellido" required>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-		<br>
-		<div class="row">
-  			<div class="col-md-10">
-    			<div class="row">
-      				<div class="col-md-6">
-        				<label >Nombre de usuario</label>
-				<input class="form-control" type="text" name="username" id="id_username" required>
-      				</div>
-      				
-    			</div>
-  			</div>
-		</div>
-		<br>
-		<div class="row">
-  			<div class="col-md-10">
-    			<div class="row">
-      				<div class="col-md-6">
-        				<label >Contraseña</label>
-				<input class="form-control" type="password" name="password1" id="pass1" required>
-      				</div>
-      				<div class="col-md-6">
-        				<label >Confirmar contraseña</label>
-				<input class="form-control" type="password" name="password2" id="pass2" required>
-      				</div>
-    			</div>
-  			</div>
-		</div>
-		<br>
-		<div class="row">
-  			<div class="col-md-10">
-        		<input class="btn btn-primary btn-lg btn-block" type="submit" name="Guardar" value="Crear Cuenta" id="id_cuenta_guardar">	
-  			</div>
-		</div>
-	</form>
-	<div class="col-md-10">
-
-	<br><br><br>
-	<hr>
-		<strong>Datos del miembro</strong>
-	<hr>
-	</div>
+	
+{% endblock %}
