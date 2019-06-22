@@ -20,15 +20,25 @@ from django.urls import include
 from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
+from SIASIS.views import base
+from django.contrib.auth.views import LoginView
+
+
+
 
 from django.contrib.auth.views import login, logout_then_login
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('planvacunacion/', include('apps.controlVacunas.urls')),
     path('plancelo/', include('apps.controlCelo.urls')),
     path('plandesparasitante/', include('apps.controlDesp.urls')),
-    path('registromascota/', include('apps.registroMascota.urls')),
+    path('registro/', include('apps.registroMascota.urls')),
+    path('', base, name="base"),
+    path('login/', auth_views.LoginView.as_view(template_name = 'login/index.html'), name='login'),  
+    path('home/', base, name="base")
+
     
 
 ]

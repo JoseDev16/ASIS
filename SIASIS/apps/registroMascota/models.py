@@ -24,6 +24,7 @@ class DueñoMascota (models.Model):
     celular = models.IntegerField()
     correo = models.EmailField()
     cuenta = models.ForeignKey(User, null = True, blank = True, on_delete = models.CASCADE)
+    
 
 class Expediente(models.Model):
     inicioControl = models.DateField(auto_now_add = True)

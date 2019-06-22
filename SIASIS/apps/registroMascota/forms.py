@@ -1,6 +1,25 @@
 from django import forms
 
-from apps.registroMascota.models import Mascota
+from apps.registroMascota.models import Mascota, DueñoMascota
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+class CuentaForm(UserCreationForm):
+
+	class Meta:
+		model=User
+		fields = [
+			'username',
+			'first_name',
+			'last_name',
+			
+		]
+		labels={
+			'username': 'Nombre de usuario',
+			'first_name': 'Nombre',
+			'last_name':'Apellido',
+			
+		}
 
 class MascotaForm(forms.ModelForm):
     class Meta:
@@ -35,3 +54,38 @@ class MascotaForm(forms.ModelForm):
             'razaMadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'peso': forms.TextInput(attrs={'class': 'input','size' : 30}),
         }
+class DueñoMascotaForm(forms.ModelForm):
+    class meta: 
+        model = DueñoMascota
+
+        
+        fields = [
+            'nombres',
+            'apellidos',
+            
+            'direccion',
+            'telefono',
+            'celular',
+            
+        ]
+
+        labels = {
+            'nombres': 'Nombres',
+            'apellidos': 'Apellidos',
+            
+            'direccion': 'Direccion',
+            'telefono': 'Telefono de casa',
+            'celular': 'celular',
+            
+        }
+
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'input','size' : 30}),
+            'apellido': forms.TextInput(attrs={'class': 'input','size' : 30}),
+            'direccion': forms.TextInput(attrs={'class': 'input','size' : 30}),
+           
+            'telefono': forms.TextInput(attrs={'class': 'input','size' : 30}),
+            'celular': forms.TextInput(attrs={'class': 'input','size' : 30}),
+            
+        }
+
