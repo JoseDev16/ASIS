@@ -3,6 +3,7 @@ from django import forms
 from apps.registroMascota.models import Mascota, DueñoMascota
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime
 
 class CuentaForm(UserCreationForm):
 
@@ -49,7 +50,7 @@ class MascotaForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'raza': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'sexo': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'fechaNacimiento': forms.SelectDateWidget,
+            'fechaNacimiento': forms.DateInput(attrs={'type':'date','max':datetime.now().date}),
             'razaPadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'razaMadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'peso': forms.TextInput(attrs={'class': 'input','size' : 30}),
