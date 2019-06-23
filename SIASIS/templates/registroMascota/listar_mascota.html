@@ -15,6 +15,7 @@
 			<th>Raza del padre</th>
 			<th>Raza de la madre</th>
 			<th>Peso (kg)</th>
+			<th>Dueño</th>
 			<th>Acciones</th>
 		</tr>  
 	</thead> 
@@ -30,6 +31,7 @@
 			<td>{{ mascota.razaPadre }}</td>  
 			<td>{{ mascota.razaMadre }}</td>  
 			<td>{{ mascota.peso }}</td>
+			<td>{{ mascota.dueñomascota }}</td>
 			<td>
 				<a class="btn btn-primary" href="{% url 'registroMascota:editar-mascota' mascota.id %}">Editar</a>
 				<a class="btn btn-danger" href="{% url 'registroMascota:eliminar-mascota' mascota.id %}">Eliminar</a>

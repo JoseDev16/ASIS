@@ -13,6 +13,9 @@ class DueñoMascota (models.Model):
     correo = models.EmailField(null = True)
     cuenta = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nombres
+
 
 
 class Mascota(models.Model):

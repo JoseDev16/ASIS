@@ -4,6 +4,12 @@ from apps.registroMascota.models import Mascota, DueñoMascota
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
+from datetime import date
+
+ahora=date.today()
+año=ahora.year
+mes=ahora.month
+dia=ahora.day
 
 class CuentaForm(UserCreationForm):
 
@@ -34,6 +40,7 @@ class MascotaForm(forms.ModelForm):
             'razaPadre',
             'razaMadre',
             'peso',
+            'dueñomascota',
         ]
 
         labels = {
@@ -44,16 +51,18 @@ class MascotaForm(forms.ModelForm):
             'razaPadre': 'Raza del padre',
             'razaMadre': 'Raza de la madre',
             'peso': 'Peso (kg)',
+            'dueñomascota':'Dueño de la mascota',
         }
 
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'raza': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'sexo': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'fechaNacimiento': forms.DateInput(attrs={'type':'date','max':datetime.now().date}),
+            'fechaNacimiento': forms.TextInput(attrs={'type':'date','max':ahora}),
             'razaPadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'razaMadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'peso': forms.TextInput(attrs={'class': 'input','size' : 30}),
+            'peso': forms.NumberInput(attrs={'class': 'input','min': '0.00','step':'0.1','size' : 30}),
+            'dueñomascota':forms.Select(attrs={'class':'form-control','width':30}),
         }
 
 class DueñoMascotaForm(forms.ModelForm):
@@ -67,6 +76,8 @@ class DueñoMascotaForm(forms.ModelForm):
             'direccion',
             'telefono',
             'celular',
+            'fechaNacDueno',
+            'correo',
             
         ]
 
@@ -76,15 +87,19 @@ class DueñoMascotaForm(forms.ModelForm):
             'direccion': 'Direccion',
             'telefono': 'Telefono de casa',
             'celular': 'celular',
+            'fechaNacDueno': 'Fecha de nacimiento',
+            'correo': 'Correo electrónico',
             
         }
 
         widgets = {
 
             'direccion': forms.TextInput(attrs={'class': 'input','size' : 30}),
-           
-            'telefono': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'celular': forms.TextInput(attrs={'class': 'input','size' : 30}),
+            'telefono': forms.NumberInput(attrs={'class': 'input','size' : 30}),
+            'celular': forms.NumberInput(attrs={'class': 'input','size' : 30}),
+            'fechaNacDueno':forms.TextInput(attrs={'class':'input','type':'date',
+                'value':(date((ahora.year)-18,mes,dia)),'max':(date((ahora.year)-18,mes,dia))}),
+            'correo':forms.EmailInput(),
             
         }
 

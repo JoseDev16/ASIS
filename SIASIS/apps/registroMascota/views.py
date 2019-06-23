@@ -106,3 +106,8 @@ def registro_full(request):
 
     }
     return render(request, 'registroMascota/registrofull.html', context)
+
+def listar_duenos(request):
+    dueno = DueñoMascota.objects.all().order_by('id')
+    contexto = {'duenos': dueno}
+    return render(request, 'registroMascota/listar_dueno.html', contexto)
