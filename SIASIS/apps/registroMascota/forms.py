@@ -54,14 +54,14 @@ class MascotaForm(forms.ModelForm):
             'razaMadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
             'peso': forms.TextInput(attrs={'class': 'input','size' : 30}),
         }
+
 class DueñoMascotaForm(forms.ModelForm):
-    class meta: 
-        model = DueñoMascota
+    class Meta: 
+        model =DueñoMascota
 
         
         fields = [
-            'nombres',
-            'apellidos',
+
             
             'direccion',
             'telefono',
@@ -70,8 +70,7 @@ class DueñoMascotaForm(forms.ModelForm):
         ]
 
         labels = {
-            'nombres': 'Nombres',
-            'apellidos': 'Apellidos',
+
             
             'direccion': 'Direccion',
             'telefono': 'Telefono de casa',
@@ -80,8 +79,7 @@ class DueñoMascotaForm(forms.ModelForm):
         }
 
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'apellido': forms.TextInput(attrs={'class': 'input','size' : 30}),
+
             'direccion': forms.TextInput(attrs={'class': 'input','size' : 30}),
            
             'telefono': forms.TextInput(attrs={'class': 'input','size' : 30}),

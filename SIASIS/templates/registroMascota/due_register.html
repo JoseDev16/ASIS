@@ -5,6 +5,9 @@
 		<form method="post">
 			{% csrf_token %}
 				{{form.as_p}}
+				<div>
+                    <button type="submit" name="btnGuardar" href= '/registro/registrofull'>Guardar</button>
+                </div>
 		</form>
 	</div>
 	

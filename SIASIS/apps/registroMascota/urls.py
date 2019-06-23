@@ -10,4 +10,5 @@ urlpatterns = [
     path('editar-mascota/<int:id_mascota>',(views.editar_mascota),name="editar-mascota"),
     path('eliminar-mascota/<int:id_mascota>',(views.eliminar_mascota),name="eliminar-mascota"),
     path('registrar-due/',(views.registrar_due),name="registrar-due"),
+    path('registrofull/',(views.registro_full),name="registro-full"),
 ]

@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+	<div class="container"align="center">
+		<form method="post">
+			{% csrf_token %}
+                {{form.as_p}}
+                <div>
+                    <button type="submit" name="btnGuardar" href= '/registro/registrar-mascota'>Guardar</button>
+                </div>
+		</form>
+	</div>
+	
+{% endblock %}
