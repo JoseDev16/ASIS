@@ -23,8 +23,8 @@ class CuentaForm(UserCreationForm):
 		]
 		labels={
 			'username': 'Nombre de usuario',
-			'first_name': 'Nombre',
-			'last_name':'Apellido',
+			'first_name': 'Nombres',
+			'last_name':'Apellidos',
 			
 		}
 
