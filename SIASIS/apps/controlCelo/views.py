@@ -14,6 +14,7 @@ import datetime
 def index_celo(request,x):
     edicion = False
     celos = ControlCelo.objects.filter(expediente=x).order_by('id')
+    ultCelo = ControlCelo.objects.filter(expediente=x).order_by('id').last()
     expediente=Expediente.objects.get(id=x)
     if request.method == "POST":  
         form = ControlCeloForm(request.POST)  
@@ -28,7 +29,7 @@ def index_celo(request,x):
                 pass
     else:  
         form = ControlCeloForm()   
-    return render(request,'controlCelo/index_celo.html',{'varcelos':celos,'form':form, 'edicion':edicion, 'idmasc':expediente.id})
+    return render(request,'controlCelo/index_celo.html',{'varcelos':celos,'form':form, 'edicion':edicion, 'idmasc':expediente, 'ultCelo':ultCelo})
     
 def registrar_vacuna(request,x):
     if request.method == "POST":  
@@ -59,7 +60,7 @@ def editar_celo(request,x,num):
                 pass
     else:
         form=ControlCeloForm(instance=instancia)
-    return render(request,'controlCelo/index_celo.html',{'varcelos':celos, 'form':form, 'edicion':edicion,'idmasc':expediente.id})
+    return render(request,'controlCelo/index_celo.html',{'varcelos':celos, 'form':form, 'edicion':edicion,'idmasc':expediente})
     
 def eliminar_celo(request,x,num):  
     valor = ControlCelo.objects.filter(expediente=x).get(id=num)  
