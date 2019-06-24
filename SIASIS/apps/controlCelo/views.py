@@ -66,3 +66,5 @@ def eliminar_celo(request,x,num):
     valor = ControlCelo.objects.filter(expediente=x).get(id=num)  
     valor.delete()  
     return HttpResponseRedirect(reverse('controlCelo:index-celo', kwargs={'x':x}))
+
+    

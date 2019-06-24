@@ -35,7 +35,7 @@ def registrar_desp(request):
 		form=ControlDesparasitacionForm(request.POST)
 		if form.is_valid():
 			form.save()
-		return redirect('controlDesp:index_desp')
+		return redirect('controlDesp:index_desp3')
 	else:
 		form=ControlDesparasitacionForm()
 	return render(request,'controlDesp/registrar_desp.html',{'form':form})
@@ -67,4 +67,25 @@ def nuevo_desp(request):
 	else:
 		form=DespForm()
 	return render(request, 'controlDesp/nuevo_desp.html', {'form':form})
+
+
+def index_desp3(request):
+	edicion=False
+	desparasitante=ControlDesparasitacion.objects.all().order_by('id')
+	
+
+	if request.method=='POST':
+		form=ControlDesparasitacionForm(request.POST)
+		if form.is_valid():
+			try:
+				form.save()
+
+
+				return HttpResponseRedirect(reverse('controlDesp:index_desp3'))
+			except:
+				pass
+		else:
+			form=ControlDesparasitacionForm()
+
+	return render(request, 'controlDesp/index_desp.html',{'vardesparasitante':desparasitante, 'edicion':edicion})
     

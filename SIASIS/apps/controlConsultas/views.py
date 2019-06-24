@@ -18,3 +18,7 @@ def listar_consultas(request,x):
 	contexto = {'consultas': consulta }
 	return render(request, 'controlConsulta/listar_consultas.html', contexto)
 
+def listar_consultasT(request):
+	consulta = Consulta.objects.all().order_by('id')
+	contexto = {'consultas': consulta }
+	return render(request, 'controlConsulta/listar_consultas.html', contexto)

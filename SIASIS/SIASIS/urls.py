@@ -39,7 +39,7 @@ urlpatterns = [
     path('', base, name="base"),
     path('login/', auth_views.LoginView.as_view(template_name = 'login/index.html'), name='login'),  
     path('home/', base, name="base"),
-    path('consultas',include('apps.controlConsultas.urls')),
+    path('consultas/',include('apps.controlConsultas.urls')),
     path('logout', LogoutView.as_view(template_name='indexPrincipal.html'), name='logout')
 
     

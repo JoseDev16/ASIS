@@ -62,8 +62,27 @@ def nueva_vacu(request):
         form=VacuForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('controlVacunas:index_vacu')
+        return redirect('controlVacunas:index_vacu2')
     else:
         form=VacuForm()
     return render(request, 'controlVacunas/nueva_vacu.html', {'form':form})
+
+def index_vacu3(request):
+    edicion = False
+    vacu = ControlVacuna.objects.all().order_by('id')
+    
+    
+    if request.method == "POST":  
+        form = ControlVacuForm(request.POST)  
+        if form.is_valid():  
+            try:
+                form.save()                  
+
+
+                return HttpResponseRedirect(reverse('controlVacunas:index_vacu3'))  
+            except:  
+                pass  
+    else:  
+        form = ControlVacuForm()   
+    return render(request,'controlVacunas/index_vacuna.html',{'varvacu':vacu,'form':form, 'edicion':edicion})
 
