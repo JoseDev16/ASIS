@@ -30,18 +30,18 @@ def index_celo(request,x):
         form = ControlCeloForm()   
     return render(request,'controlCelo/index_celo.html',{'varcelos':celos,'form':form, 'edicion':edicion, 'idmasc':expediente.id})
     
-def registrar_vacuna(request,n):
+def registrar_vacuna(request,x):
     if request.method == "POST":  
-        x = CeloForm(request.POST)  
-        if x.is_valid():  
+        form = CeloForm(request.POST)  
+        if form.is_valid():  
             try:  
-                x.save()  
+                form.save()  
                 return HttpResponseRedirect(reverse('controlCelo:index-celo', kwargs={'x':x})) 
             except:  
                 pass  
     else:  
-        x = CeloForm()   
-    return render(request,'controlCelo/registrar_vacuna_celo.html',{'form':x})
+        form = CeloForm()   
+    return render(request,'controlCelo/registrar_vacuna_celo.html',{'form':form, 'idmasc':x})
     
 def editar_celo(request,x,num):
     edicion = True

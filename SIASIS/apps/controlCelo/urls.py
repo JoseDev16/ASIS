@@ -7,7 +7,7 @@ app_name = "controlCelo"
 urlpatterns = [
 	path('<int:x>', (views.index_celo), name="control-celo"),
     path('index-celo/<int:x>', (views.index_celo),name="index-celo"),	
-    path('registrar-vacuna-celo/',(views.registrar_vacuna),name="registrar-vacuna-celo"),
+    path('registrar-vacuna-celo/<int:x>',(views.registrar_vacuna),name="registrar-vacuna-celo"),
     path('editar-celo/<int:x>/<int:num>', (views.editar_celo), name="editar-celo"),
     path('eliminar-celo/<int:x>/<int:num>', (views.eliminar_celo), name="eliminar-celo"),
 ]

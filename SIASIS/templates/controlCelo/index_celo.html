@@ -118,7 +118,7 @@
       {{ form.expediente.value }}  
 </form> 
 
-	<form action="/plancelo/registrar-vacuna-celo/{{idmasc}}" method="POST">
+	<form action="{% url 'controlCelo:registrar-vacuna-celo' idmasc %}" method="POST">
 	{% csrf_token %}  
 		<button type="submit" class="btn btn-primary">Ingresar vacuna</button>  
 	</form> 
