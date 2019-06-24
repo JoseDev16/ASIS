@@ -114,3 +114,9 @@ def listar_duenos(request):
     dueno = DueñoMascota.objects.all().order_by('id')
     contexto = {'duenos': dueno}
     return render(request, 'registroMascota/listar_dueno.html', contexto)
+
+
+def listar_expedientes(request):
+    expediente =Expediente.objects.all()
+    contexto = {'expedientes': expediente}
+    return render(request, 'registroMascota/listar_expedientes.html', contexto)

@@ -1,24 +1,28 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import redirect
 import datetime
 from apps.controlVacunas.models import Vacuna
 from apps.controlVacunas.models import ControlVacuna
 from apps.controlVacunas.forms import ControlVacuForm
 from apps.controlVacunas.forms import VacuForm
+from apps.registroMascota.models import Expediente
 
-def index_vacu(request):
+
+def index_vacu(request,x):
     edicion = False
-    vacu = ControlVacuna.objects.all()
+    vacu = ControlVacuna.objects.filter(expediente=x).order_by('id')
+    expediente=Expediente.objects.get(id=x)
     
     if request.method == "POST":  
         form = ControlVacuForm(request.POST)  
         if form.is_valid():  
             try:                  
-                form.save()  
-                form = ControlVacuForm()
-                return HttpResponseRedirect(reverse('controlVacu:index_vacu'))  
+                instance = form.save(commit=False) 
+                instance.expediente = expediente
+                instance.save()
+                return HttpResponseRedirect(reverse('controlVacu:index_vacu', kwargs={'x':x}))  
             except:  
                 pass  
     else:  

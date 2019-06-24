@@ -29,8 +29,8 @@
 					<td>{{ desp.desparasitante.nombreDesparasitante }}</td>
 					<td>{{ vacu.fechaProxVac  }}</td>  
 					<td>  
-						<a class="btn btn-primary" href="{% url 'controlVacu:editar_vacu' vacu.id %}">Editar</a>
-						<a class="btn btn-danger" href="{% url 'controlVacu:eliminar_vacu' vacu.id %}">Eliminar</a>
+						<a class="btn btn-primary" href="{% url 'controlVacunas:editar_vacu' vacu.id %}">Editar</a>
+						<a class="btn btn-danger" href="{% url 'controlVacunas:eliminar_vacu' vacu.id %}">Eliminar</a>
 					</td>  
 				</tr>  
 			{% endfor %}
@@ -39,10 +39,10 @@
 			</tbody>  
 		</table>
 		<div class="col"align="center" style="padding-bottom:1%">
-			<a class="btn btn-primary" href="{% url 'controlVacu:registrar_vacu' %}">Agregar Vacunacion</a>
+			<a class="btn btn-primary" href="{% url 'controlVacunas:registrar_vacu' %}">Agregar Vacunacion</a>
 		</div>
 		<div class="col"align="center" style="padding-bottom:1%">
-			<a class="btn btn-primary" href="{% url 'controlVacu:nueva_vacu' %}">Crear nueva vacuna</a>
+			<a class="btn btn-primary" href="{% url 'controlVacunas:nueva_vacu' %}">Crear nueva vacuna</a>
 		</div>
 	</div>
 </div>
