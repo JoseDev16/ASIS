@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from apps.registroMascota.forms import MascotaForm, CuentaForm, DueñoMascotaForm
-from apps.registroMascota.models import Mascota, DueñoMascota
+from apps.registroMascota.models import Mascota, DueñoMascota, Expediente
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.views.generic import CreateView, ListView, UpdateView
@@ -21,10 +21,13 @@ def registrar_mascota(request):
             
 
             if 'btnGuardar' in request.POST:
-                mascota = Mascota.objects.latest('id')
-                mascota.dueñomascota_id= dueno.id
-                mascota.save()
+                mascota1 = Mascota.objects.latest('id')
+                mascota1.dueñomascota_id= dueno.id
+                mascota1.save()
+
                 form._save_m2m()
+                exp = Expediente(mascota = mascota1)
+                exp.save()
                 
                 return redirect('registroMascota:listar-mascota')
 

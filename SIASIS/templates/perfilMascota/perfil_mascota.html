@@ -1,0 +1,100 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="news" style="padding-top:10px">
+	<div class="container" >
+		<h2 style="text-align:center;">Perfil de Mascota</h2>
+		<div class="row" align="center">
+		<table class="col-sm-6">  
+			<br>  
+			<tr>
+				<th style="text-align:right;">
+					<h3>Datos de la Mascota</h3>
+					<br>
+				</th>
+			</tr>
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Nombre:</label></td>  
+				<td>  
+				  {{ mascota.nombre }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Raza:</label></td>  
+				<td>  
+				  {{ mascota.raza }}  
+				</td>  
+			</div>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Sexo:</label></td>  
+				<td>  
+				  {{ mascota.sexo }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Fecha de Nacimiento:</label></td>  
+				<td>  
+				  {{ mascota.fechaNacimiento }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Raza del Padre:</label></td>  
+				<td>  
+				  {{ mascota.razaPadre }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Raza de la Madre:</label></td>  
+				<td>  
+				  {{ mascota.razaMadre }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Peso:</label></td>  
+				<td>  
+				  {{ mascota.peso }}  
+				</td>  
+			</tr>  
+		</table>
+		<table>
+			<tr>
+				<th style="text-align:right;">
+					<h3>Próximos eventos</h3>
+					<br>
+				</th>
+			</tr>
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Próximo celo:</label></td>  
+				<td>  
+				  {{ celo.proximoCelo }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Próxima cita:</label></td>  
+				<td>  
+				  {{ consulta.proximaCita }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Próxima desparasitación:</label></td>  
+				<td>  
+				  {{ desp.fechaProxDes }}  
+				</td>  
+			</tr>  
+			<tr>   
+				<td style="text-align:right; padding-right:15px;"><label>Próxima vacuna:</label></td>  
+				<td>  
+				  {{ vacuna.fechaProxVac }}  
+				</td>  
+			</tr>  
+		</table>
+		</div>
+		<br>
+		<br>
+		< Volver al inicio 
+	</div>  
+</div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath1" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath2" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
+{% endblock %}

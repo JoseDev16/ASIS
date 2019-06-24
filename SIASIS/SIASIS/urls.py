@@ -35,9 +35,11 @@ urlpatterns = [
     path('plancelo/', include('apps.controlCelo.urls')),
     path('plandesparasitante/', include('apps.controlDesp.urls')),
     path('registro/', include('apps.registroMascota.urls')),
+    path('perfilmascota/', include('apps.perfilMascota.urls')),
     path('', base, name="base"),
     path('login/', auth_views.LoginView.as_view(template_name = 'login/index.html'), name='login'),  
-    path('home/', base, name="base")
+    path('home/', base, name="base"),
+    path('consultas',include('apps.controlConsultas.urls'))
 
     
 
