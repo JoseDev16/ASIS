@@ -1,11 +1,16 @@
 from django.urls import path, re_path
-from apps.controlVacunas import views
+from apps.controlVacunas.views import index_vacu, registrar_vacu, editar_vacu, eliminar_vacu, nueva_vacu
 from django.contrib.auth.decorators import login_required
 
-app_name = "controlVacunas"
+app_name="controlVacu"
 
 urlpatterns = [
-	path('control-vacunas/', (views.index), name="control"),
-	
 
+	path('', index_vacu, name="index_vacu"),
+	path('index_vacuna/', index_vacu, name="index_vacu"),
+    path('registrar_vacuna/', registrar_vacu, name="registrar_vacu"),
+    path('editar_vacuna/<int:num>', editar_vacu, name="editar_vacu"),
+    path('eliminar_vacuna/<int:num>',eliminar_vacu,name="eliminar_vacu"),
+    path('nueva_vacu/',nueva_vacu,name="nueva_vacu"),
 ]
+	

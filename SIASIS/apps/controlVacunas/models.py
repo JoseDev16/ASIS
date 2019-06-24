@@ -8,6 +8,8 @@ from apps.registroMascota.models import Expediente
 
 class Vacuna(models.Model):
     nombre = models.CharField(max_length = 60)
+    def __str__(self):
+        return self.nombre
 
 class ControlVacuna(models.Model):
     fechaAplicacionVac = models.DateField()
