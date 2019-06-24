@@ -1,24 +1,28 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import redirect
 import datetime
 from apps.controlDesp.models import Desparasitante
 from apps.controlDesp.models import ControlDesparasitacion
 from apps.controlDesp.forms import ControlDesparasitacionForm
 from apps.controlDesp.forms import DespForm
+from apps.registroMascota.models import Expediente
 
-def index_desp(request):
+def index_desp(request,x):
 	edicion=False
-	desparasitante=ControlDesparasitacion.objects.all()
+	desparasitante=ControlDesparasitacion.objects.filter(expediente=x).order_by('id')
+	expediente = Expediente.objects.get(id=x)
 
 	if request.method=='POST':
 		form=ControlDesparasitacionForm(request.POST)
 		if form.is_valid():
 			try:
-				form.save()
-				form=ControlDesparasitacionForm()
-				return HttpResponseRedirect(reverse('controlDesp:index_desp'))
+				instance = form.save(commit = False)
+				instance.expediente = expediente
+				instance.save()
+
+				return HttpResponseRedirect(reverse('controlDesp:index_desp',kwargs={'x':x}))
 			except:
 				pass
 		else:

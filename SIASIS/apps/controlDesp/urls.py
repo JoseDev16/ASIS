@@ -5,7 +5,7 @@ app_name = "controlDesp"
 
 urlpatterns = [
 	path('', index_desp, name="index_desp"),
-	path('index_desp/', index_desp, name="index_desp"),
+	path('index_desp/<int:x>', index_desp, name="index_desp2"),
     path('registrar_desp/', registrar_desp, name="registrar_desp"),
     path('editar_desp/<int:num>', editar_desp, name="editar_desp"),
     path('eliminar-mascota/<int:num>',eliminar_desp,name="eliminar_desp"),

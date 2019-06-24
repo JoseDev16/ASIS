@@ -120,3 +120,12 @@ def listar_expedientes(request):
     expediente =Expediente.objects.all()
     contexto = {'expedientes': expediente}
     return render(request, 'registroMascota/listar_expedientes.html', contexto)
+
+def mis_mascotas(request):
+    #dueno = DueñoMascota.objects.all()
+    #dueno.cuenta_id = request.user.id
+    #mascota = Mascota.objects.filter(dueñomascota = dueno)
+    expediente = Expediente.objects.filter(cuenta = request.user)
+    contexto = {'expedientes': expediente}
+    return render(request, 'registroMascota/mis_mascotas.html', contexto)
+

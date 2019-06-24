@@ -22,7 +22,7 @@ def index_vacu(request,x):
                 instance = form.save(commit=False) 
                 instance.expediente = expediente
                 instance.save()
-                return HttpResponseRedirect(reverse('controlVacu:index_vacu', kwargs={'x':x}))  
+                return HttpResponseRedirect(reverse('controlVacunas:index_vacu', kwargs={'x':x}))  
             except:  
                 pass  
     else:  
@@ -34,7 +34,7 @@ def registrar_vacu(request):
 		form=ControlVacuForm(request.POST)
 		if form.is_valid():
 			form.save()
-		return redirect('controlVacu:index_vacu')
+		return redirect('controlVacunas:index_vacu')
 	else:
 		form=ControlVacuForm()
 	return render(request,'controlVacunas/registrar_vacuna.html',{'form':form})
@@ -47,14 +47,14 @@ def editar_vacu(request, num):
 		form=ControlVacuForm(request.POST, instance=vacuna)
 		if form.is_valid():
 			form.save()
-			return redirect('controlVacu:index_vacu')
+			return redirect('controlVacunas:index_vacu')
 	return render(request,'controlVacunas/registrar_vacuna.html', {'form':form})
 
 def eliminar_vacu(request, num):  
     vacu = ControlVacuna.objects.get(id=num) 
     if request.method=='POST':
     	vacu.delete()  
-    	return redirect('controlVacu:index_vacu')
+    	return redirect('controlVacunas:index_vacu')
     return render(request,'controlVacunas/eliminar_vacuna.html',{'vacu':vacu})
 
 def nueva_vacu(request):
@@ -62,7 +62,7 @@ def nueva_vacu(request):
         form=VacuForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('controlVacu:index_vacu')
+        return redirect('controlVacunas:index_vacu')
     else:
         form=VacuForm()
     return render(request, 'controlVacunas/nueva_vacu.html', {'form':form})

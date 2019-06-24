@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"># </th>
+      <th scope="col"> Titulo</th>
+      <th scope="col">Fecha proxima cita</th>
+      <th scope="col">cita unica</th>
+    
+
+     
+      <th scope="col">Opciones para realizar</th>
+     
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% if consultas %}
+    {% for consulta in consultas %}
+    
+
+    
+    <tr>
+      <td>{{consulta.id}}</td>
+      <td>{{consulta.titulo}}</td>
+      <td> {{consulta.proximaCita}}</td>
+
+     
+
+
+      <td> 
+
+          <a class="btn btn-light"  > Ver detalles</a>
+          
+
+      </td>
+    
+    
+    
+
+    {% endfor%}
+    {% else %}
+    <h1> No se encuentran registros disponibles </h1>
+
+    
+
+    {% endif %}
+   
+  </tbody>
+</table> 
+
+{% endblock %}

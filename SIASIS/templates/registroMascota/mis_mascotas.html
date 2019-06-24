@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="col"align="center" style="padding-bottom:1%">  
+    <h3>Listado de Mascotas</h3>  
+ </div>  
+<table class="table table-bordered">  
+	<thead class="thead-dark">  
+		<tr>
+			<th>#</th>
+			<th>Nombre</th>
+			<th>Raza</th>
+			
+
+		</tr>  
+	</thead> 
+	<tbody>  
+        {% if expedientes %}
+        {% for expediente in expedientes %} 
+		<tr>  
+			<td>{{ expediente.mascota.id }}</td>  
+			<td>{{ expediente.mascota.nombre }}</td>  
+			<td>{{ expediente.mascota.raza }}</td>  
+			
+
+			<td>
+				<a class="btn btn-primary" href="{% url 'perfilMascota:perfil-mascota' expediente.id %}">Ver perfil</a>
+				
+			</td>
+		</tr>  
+		{% endfor %}
+		{% else %}
+		<h1>No hay registro de mascotas</h1>
+		{% endif %}  
+	</tbody>  
+</table>
+{% endblock %}

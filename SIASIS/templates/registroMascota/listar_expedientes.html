@@ -37,9 +37,9 @@
 
       <td> 
           <a class="btn btn-light" href="{% url 'controlVacunas:index_vacu2' expediente.id %}" >Vacunacion</a>
-          <a class="btn btn-light" >Desparacitacion</a>
+          <a class="btn btn-light" href="{% url 'controlDesp:index_desp2' expediente.id %}"  >Desparacitacion</a>
           <a class="btn btn-light" href="{% url 'controlCelo:index-celo' expediente.id %}"  >Celo</a>
-          <a class="btn btn-light"  >Consulta</a>
+          <a class="btn btn-light" href="{% url 'controlConsultas:listar_consultas' expediente.id %}"  >Consulta</a>
           
 
       </td>

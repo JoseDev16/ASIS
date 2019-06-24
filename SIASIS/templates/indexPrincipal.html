@@ -26,14 +26,40 @@
         <div class="top-header">
             <div class="container">
                 <div class="logo">
-                  <a href="index.html"><h1>A<span>sis</span></h1></a>
+                  <a href="/home"><h1>A<span>sis</span></h1></a>
                 </div>
              <div class="top-menu">
                 <span class="menu"> </span>
+                {% if user.is_authenticated and user.is_superuser %}
+                    
                     <ul class="cl-effect-16">
-                    <li><a href="/login/" data-hover="Iniciar Sesion">Iniciar Sesion</a></li>
-                      <div class="clearfix"></div>
+                        <li><a href="/login/" data-hover="Iniciar Sesion">Pruebaadmin</a></li>
+                          <div class="clearfix"></div>
                     </ul>
+                {% elif user.is_authenticated %}
+                    <ul class="cl-effect-16">
+                        <li><a href="/login/" data-hover="Iniciar Sesion">Prueba usuario</a></li>
+                        <li><a href="{%url 'registroMascota:mis_mascotas'%}" data-hover="Mis mascotas">Mis mascotas</a></li>
+                        <li><a href="/logout" data-hover="Salir">Salir</a></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                    
+
+                    
+
+                {%else%}
+                    <ul class="cl-effect-16">
+                        <li><a href="/login/" data-hover="Iniciar Sesion">Iniciar sesion</a></li>
+                        <div class="clearfix"></div>
+                    </ul>
+
+               
+                    
+
+                {% endif %}
+
+
+
                 </div>
                 <!-- script-for-menu -->
                     <script>
