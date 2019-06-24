@@ -9,9 +9,9 @@ class Celo (models.Model):
 
 
 class ControlCelo (models.Model):
-    fechaInicioCelo = models.DateField(unique=True)
-    fechaFinCelo = models.DateField(unique=True)
-    fechaAplic = models.DateField(unique=True)
+    fechaInicioCelo = models.DateField()
+    fechaFinCelo = models.DateField()
+    fechaAplic = models.DateField()
+    proximoCelo = models.DateField(null=True)
     celo = models.ForeignKey(Celo, null = True, blank = True, on_delete = models.CASCADE)
-    
-
+    expediente = models.ForeignKey(Expediente, null = True, blank = True, on_delete = models.CASCADE)
