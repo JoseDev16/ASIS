@@ -3,6 +3,8 @@ from apps.registroMascota.models import Expediente
 # Create your models here.
 class Desparasitante(models.Model):
     nombreDesparasitante = models.CharField(max_length = 60)
+    def __str__(self):
+        return self.nombreDesparasitante
 
 class ControlDesparasitacion(models.Model):
     fechaAplicacion=models.DateField()

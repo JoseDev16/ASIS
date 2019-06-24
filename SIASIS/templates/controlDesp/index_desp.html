@@ -5,32 +5,32 @@
 	<div class="container" style="background-color:rgba(255, 255, 255, 0.2);" >
     	<div class="col" align="center" style="padding-bottom:1%"> 
 	
-    	<h2>Fecha proxima vacunacion: ##/##/##</h2>
-    	<h3>Control de vacunacion</h3> 
+    	<h2>Fecha proxima desparasitacion: ##/##/##</h2>
+    	<h3>Control de desparasitacion</h3> 
 		<table class="table table-bordered">  
 			<thead class="thead-dark">  
 				<tr>  
 					<th>#</th>
 					<th>Fecha</th>  
 					<th>Dosis aplicada</th>  
-					<th>Tipo de Vacuna</th>  
-					<th>Siguiente vacunacion</th>
+					<th>Tipo de desparasitante</th>  
+					<th>Siguiente desparasitacion</th>
 				</tr>  
 			</thead> 
 			<tbody>  
 			{% if desp %}
 			<h1>No hay registros de desparasitantes</h1>
 			{% else %}
-				{% for vacu in varvacu %}
+				{% for desp in vardesparasitante %}
 				<tr>  
-					<td>{{ vacu.id }}</td>
-					<td>{{ vacu.fechaAplicacionVac }}</td>  
-					<td>{{ vacu.cantDosis }}</td>  
+					<td>{{ desp.id }}</td>
+					<td>{{ desp.fechaAplicacion }}</td>  
+					<td>{{ desp.dosisDesp }}</td>  
 					<td>{{ desp.desparasitante.nombreDesparasitante }}</td>
-					<td>{{ vacu.fechaProxVac  }}</td>  
+					<td>{{ desp.fechaProxDes }}</td>  
 					<td>  
-						<a class="btn btn-primary" href="{% url 'controlVacu:editar_vacu' vacu.id %}">Editar</a>
-						<a class="btn btn-danger" href="{% url 'controlVacu:eliminar_vacu' vacu.id %}">Eliminar</a>
+						<a class="btn btn-primary" href="{% url 'controlDesp:editar_desp' desp.id %}">Editar</a>
+						<a class="btn btn-danger" href="{% url 'controlDesp:eliminar_desp' desp.id %}">Eliminar</a>
 					</td>  
 				</tr>  
 			{% endfor %}
@@ -39,10 +39,10 @@
 			</tbody>  
 		</table>
 		<div class="col"align="center" style="padding-bottom:1%">
-			<a class="btn btn-primary" href="{% url 'controlVacu:registrar_vacu' %}">Agregar Vacunacion</a>
+			<a class="btn btn-primary" href="{% url 'controlDesp:registrar_desp' %}">Agregar desparasitacion</a>
 		</div>
 		<div class="col"align="center" style="padding-bottom:1%">
-			<a class="btn btn-primary" href="{% url 'controlVacu:nueva_vacu' %}">Crear nueva vacuna</a>
+			<a class="btn btn-primary" href="{% url 'controlDesp:nuevo_desp' %}">Crear nuevo desparasitante</a>
 		</div>
 	</div>
 </div>
