@@ -30,33 +30,37 @@
                 </div>
              <div class="top-menu">
                 <span class="menu"> </span>
-                {% if user.is_authenticated and user.is_superuser %}
+                    {% if user.is_authenticated and user.is_superuser %}
                     
-                    <ul class="cl-effect-16">
-                        <li><a href="/login/" data-hover="Iniciar Sesion">Pruebaadmin</a></li>
-                          <div class="clearfix"></div>
-                    </ul>
-                {% elif user.is_authenticated %}
-                    <ul class="cl-effect-16">
-                        <li><a href="/login/" data-hover="Iniciar Sesion">Prueba usuario</a></li>
-                        <li><a href="{%url 'registroMascota:mis_mascotas'%}" data-hover="Mis mascotas">Mis mascotas</a></li>
-                        <li><a href="/logout" data-hover="Salir">Salir</a></li>
-                        <div class="clearfix"></div>
-                    </ul>
-                    
+                        <ul class="cl-effect-16">
+                            <li><a data-hover="Bienvenido Dr.">Bienvenido Dr. {{ user.username }}</a></li>
+                            <li><a href="{%url 'registroMascota:listar_expedientes'%}" data-hover="Ver expedientes">Ver expedientes</a></li>
+                            <li><a href="{%url 'registroMascota:listar-mascota'%}" data-hover="Mis mascotas">Mis mascotas</a></li>
+                            <li><a href="{%url 'registroMascota:registrar-due'%}" data-hover="Mis mascotas">Registrar Cliente</a></li>
+                            <li><a href="{%url 'registroMascota:registrar-mascota'%}" data-hover="Mis mascotas">Registrar Mascota</a></li>
+                            <li><a href="/logout" data-hover="Salir">Salir</a></li>
 
-                    
+                            <div class="clearfix"></div>
+                        </ul>
+                    {% elif user.is_authenticated %}
+                        <ul class="cl-effect-16">
+                            <li><a  data-hover="Bienvenido "> Bienvenido {{ user.username }} </a></li>
+                            <li><a href="{%url 'registroMascota:mis_mascotas'%}" data-hover="Mis mascotas">Mis mascotas</a></li>
+                             <li><a href="/logout" data-hover="Salir">Salir</a></li>
+                            <div class="clearfix"></div>
+                        </ul>
+            
 
-                {%else%}
-                    <ul class="cl-effect-16">
-                        <li><a href="/login/" data-hover="Iniciar Sesion">Iniciar sesion</a></li>
-                        <div class="clearfix"></div>
-                    </ul>
+            
 
-               
-                    
+                    {%else%}
+                        <ul class="cl-effect-16">
+                            <li><a href="/login/" data-hover="Iniciar Sesion">Iniciar sesion</a></li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    {% endif %}
 
-                {% endif %}
+ 
 
 
 

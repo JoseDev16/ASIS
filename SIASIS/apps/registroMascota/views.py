@@ -26,8 +26,10 @@ def registrar_mascota(request):
                 mascota1.save()
 
                 form._save_m2m()
-                exp = Expediente(mascota = mascota1)
+                cuentaExp = User.objects.latest('id')
+                exp = Expediente(mascota = mascota1, cuenta = cuentaExp)
                 exp.save()
+
                 
                 return redirect('registroMascota:listar-mascota')
 
