@@ -83,8 +83,19 @@
 		</div>
 		<div class="col-sm-6" style="padding:7.5%" align="center">
 			{% load static %}
-			<img src="{% static "images/asis.png" %}" style="max-width:300px;" alt="My image">
-		</div>
+			{% if imagenPerfil %}
+			<img src="{{imagenPerfil}}" style="max-width:300px;" alt="Imagen no disponible">
+		    {% endif %}
+			<br>
+			<div style="text-align:center;">
+			Modifica aquí la imagen de perfil de tu mascota.
+			</div>
+			<form method="post" enctype="multipart/form-data" action="{% url 'perfilMascota:perfil-mascota' id %}">
+				{% csrf_token %}
+				<input type="file" name="pr-pic-{{id}}">
+				<button type="submit">Subir</button>
+		    </form>
+  </div>
 	</div>  
 	<br>
 	<div style="padding-left:7%">
