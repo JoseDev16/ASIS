@@ -1,61 +1,45 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col"># </th>
-      <th scope="col"> Nombre Mascota</th>
-      <th scope="col">Nombre dueño</th>
-      <th scope="col">Apellidos Dueñp</th>
-      <th scope="col">Inicio Control</th>
-
-     
-      <th scope="col">Opciones para realizar</th>
-     
-      
-      
-    </tr>
-  </thead>
-  <tbody>
-    {% if expedientes %}
-    {% for expediente in expedientes %}
-    
-
-    
-    <tr>
-      <td>{{expediente.id}}</td>
-      <td>{{expediente.mascota.nombre}}</td>
-      <td> {{expediente.mascota.dueñomascota.nombres}}</td>
-      <td> {{expediente.mascota.dueñomascota.apellidos}}</td>
-      <td>{{expediente.inicioControl}} </td>
-    
-     
-
-
-      <td> 
-          <a class="btn btn-light" href="{% url 'controlVacunas:index_vacu2' expediente.id %}" >Vacunacion</a>
-          <a class="btn btn-light" href="{% url 'controlDesp:index_desp2' expediente.id %}"  >Desparacitacion</a>
-          <a class="btn btn-light" href="{% url 'controlCelo:index-celo' expediente.id %}"  >Celo</a>
-          <a class="btn btn-light" href="{% url 'controlConsultas:listar_consultas' expediente.id %}"  >Consulta</a>
-          
-
-      </td>
-    
-    
-    
-
-    {% endfor%}
-    {% else %}
-    <h1> No se encuentran registros disponibles </h1>
-
-    
-
-    {% endif %}
-   
-  </tbody>
-</table> 
-
+<div class="health-care" style="padding-top:2%; padding-bottom:0;" >
+	<div class="container" >
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<table class="table table-striped">
+		  <thead>
+			<tr>
+			  <th scope="col"># </th>
+			  <th scope="col"> Nombre Mascota</th>
+			  <th scope="col">Nombre dueño</th>
+			  <th scope="col">Apellidos Dueñp</th>
+			  <th scope="col">Inicio Control</th>
+			  <th scope="col">Opciones para realizar</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			{% if expedientes %}
+			{% for expediente in expedientes %}
+			<tr>
+			  <td>{{expediente.id}}</td>
+			  <td>{{expediente.mascota.nombre}}</td>
+			  <td> {{expediente.mascota.dueñomascota.nombres}}</td>
+			  <td> {{expediente.mascota.dueñomascota.apellidos}}</td>
+			  <td>{{expediente.inicioControl}} </td>
+			  <td> 
+				  <a class="btn btn-light" href="{% url 'controlVacunas:index_vacu2' expediente.id %}" >Vacunacion</a>
+				  <a class="btn btn-light" href="{% url 'controlDesp:index_desp2' expediente.id %}"  >Desparacitacion</a>
+				  <a class="btn btn-light" href="{% url 'controlCelo:index-celo' expediente.id %}"  >Celo</a>
+				  <a class="btn btn-light" href="{% url 'controlConsultas:listar_consultas' expediente.id %}"  >Consulta</a>
+			  </td>
+			{% endfor%}
+			{% else %}
+			<h1> No se encuentran registros disponibles </h1>
+			{% endif %}
+		  </tbody>
+		</table>
+	</div>
+</div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath3" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath4" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
 {% endblock %}

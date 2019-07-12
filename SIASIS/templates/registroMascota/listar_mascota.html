@@ -3,48 +3,50 @@
 {% block content %}
 
 <div class="health-care" id="new" style="padding-top:2%; padding-bottom:0;" >
-<div class="col"align="center" style="padding-bottom:1%">  
-    <h3>Listado de Mascotas</h3>  
- </div>  
-<table class="table table-bordered">  
-	<thead class="thead-dark">  
-		<tr>
-			<th>No. Mascota</th>
-			<th>Nombre</th>
-			<th>Raza</th>
-			<th>Sexo</th>
-			<th>Fecha de nacimiento</th>
-			<th>Raza del padre</th>
-			<th>Raza de la madre</th>
-			<th>Peso (kg)</th>
-			<th>Dueño</th>
-			<th>Acciones</th>
-		</tr>  
-	</thead> 
-	<tbody>  
-		{% if mascotas %}
-		{% for mascota in mascotas %}  
-		<tr>  
-			<td>{{ mascota.id }}</td>  
-			<td>{{ mascota.nombre }}</td>  
-			<td>{{ mascota.raza }}</td>  
-			<td>{{ mascota.sexo }}</td>  
-			<td>{{ mascota.fechaNacimiento }}</td>
-			<td>{{ mascota.razaPadre }}</td>  
-			<td>{{ mascota.razaMadre }}</td>  
-			<td>{{ mascota.peso }}</td>
-			<td>{{ mascota.dueñomascota }}</td>
-			<td>
-				<a class="btn btn-primary" href="{% url 'registroMascota:editar-mascota' mascota.id %}">Editar</a>
-				<a class="btn btn-danger" href="{% url 'registroMascota:eliminar-mascota' mascota.id %}">Eliminar</a>
-			</td>
-		</tr>  
-		{% endfor %}
-		{% else %}
-		<h1>No hay registro de mascotas</h1>
-		{% endif %}  
-	</tbody>  
-</table>
+	<div style="padding:15px;">
+		<div class="col"align="center" style="padding-bottom:1%">  
+			<h3>Listado de Mascotas</h3>  
+		 </div>  
+		<table class="table table-bordered" style="margin-bottom:0;">  
+			<thead class="thead-dark">  
+				<tr>
+					<th>No. Mascota</th>
+					<th>Nombre</th>
+					<th>Raza</th>
+					<th>Sexo</th>
+					<th>Fecha de nacimiento</th>
+					<th>Raza del padre</th>
+					<th>Raza de la madre</th>
+					<th>Peso (kg)</th>
+					<th>Dueño</th>
+					<th>Acciones</th>
+				</tr>  
+			</thead> 
+			<tbody>  
+				{% if mascotas %}
+				{% for mascota in mascotas %}  
+				<tr>  
+					<td>{{ mascota.id }}</td>  
+					<td>{{ mascota.nombre }}</td>  
+					<td>{{ mascota.raza }}</td>  
+					<td>{{ mascota.sexo }}</td>  
+					<td>{{ mascota.fechaNacimiento }}</td>
+					<td>{{ mascota.razaPadre }}</td>  
+					<td>{{ mascota.razaMadre }}</td>  
+					<td>{{ mascota.peso }}</td>
+					<td>{{ mascota.dueñomascota }}</td>
+					<td>
+						<a class="btn btn-primary" href="{% url 'registroMascota:editar-mascota' mascota.id %}">Editar</a>
+						<a class="btn btn-danger" href="{% url 'registroMascota:eliminar-mascota' mascota.id %}">Eliminar</a>
+					</td>
+				</tr>  
+				{% endfor %}
+				{% else %}
+				<h1>No hay registro de mascotas</h1>
+				{% endif %}  
+			</tbody>  
+		</table>
+	</div>
 </div>
 <svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
 <path id="trianglePath3" d="M0 0 L50 100 L100 0 Z"></path>
