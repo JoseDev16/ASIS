@@ -27,8 +27,8 @@
 					<td>{{ celo.fechaAplic }}</td>  
 					<td>{{ celo.celo }}</td>  
 					<td>  
-						<a href="{% url 'controlCelo:editar-celo' x=idmasc.id num=celo.id %}#new">Actualizar</a>  
-						<a href="{% url 'controlCelo:eliminar-celo' x=idmasc.id num=celo.id %}">Eliminar</a>  
+						<a href="{% url 'controlCelo:editar-celo' x=idmasc.id num=celo.id %}#new"><button class="btn btn-success">Actualizar</button></a>  
+						<a href="{% url 'controlCelo:eliminar-celo' x=idmasc.id num=celo.id %}"><button class="btn btn-danger">Eliminar</button></a>  
 					</td>  
 				</tr>  
 			{% endfor %}  
@@ -125,9 +125,9 @@
 	</div>
 	<div class="clearfix"></div>
 	{% if edicion %}
-	<form action="{% url 'controlCelo:index-celo' idmasc.id %}" method="GET">
+	<a href="{% url 'controlCelo:index-celo' idmasc.id %}">
 	{% csrf_token %}  
-		<button type="submit" class="btn btn-primary">Cancelar</button>  
+		<button class="btn btn-primary">Cancelar</button>  
 	</form> 
 	{% endif %}
 </div>	 
