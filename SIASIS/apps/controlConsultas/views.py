@@ -14,8 +14,10 @@ class CrearConsulta(CreateView):
 	success_url = '/'
 
 def listar_consultas(request,x):
+	expediente = Expediente.objects.get(id=x)
 	consulta = Consulta.objects.filter(expediente =x).order_by('id')
-	contexto = {'consultas': consulta }
+	contexto = {'consultas': consulta,
+				'prueba':expediente }
 	return render(request, 'controlConsulta/listar_consultas.html', contexto)
 
 def listar_consultasT(request):
@@ -70,6 +72,7 @@ def consultaCrear2(request,x):
 	context ={
 
 		'form':form,
+		'prueba':expediente	
 
 
 	}
@@ -77,6 +80,10 @@ def consultaCrear2(request,x):
 	return render(request, 'controlConsulta/crearConsulta.html',context)
 
 
+def listar_consultasd(request,x):
+	consulta = Consulta.objects.filter(id =x)
+	contexto = {'consultas': consulta }
+	return render(request, 'controlConsulta/detalle.html', contexto)
 
 
 

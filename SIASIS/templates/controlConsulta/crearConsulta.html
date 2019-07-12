@@ -4,8 +4,14 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<div class="container"align="center">
 		<form method="post">
-			{% csrf_token %}
-                {{form.as_p}}
+            {% csrf_token %}
+            {% for field in form %} 
+                <div class="field_container row">
+                    {{field.errors}}
+                    {{field.label_tag}} </br>
+                    {{field}}
+                </div>
+            {% endfor %}
                 <div>
                     <button type="submit" name="btnGuardar" href= '//'>Guardar</button>
                 </div>

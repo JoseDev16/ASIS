@@ -2,11 +2,6 @@
 
 {% block content %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <div>
-
-      <a class="btn btn-light"  href="{% url 'controlConsultas:consultaCrear2' prueba.id %}"> Crear nueva consulta
-      </a>
-    </div>
 
 <table class="table table-striped">
   <thead>
@@ -15,10 +10,12 @@
       <th scope="col"> Titulo</th>
       <th scope="col">Fecha proxima cita</th>
       <th scope="col">cita unica</th>
-    
+      <th scope="col">Tratamiento</th>
+      <th scope="col">Detalle</th>
 
+      
      
-      <th scope="col">Opciones para realizar</th>
+      
      
       
       
@@ -44,12 +41,20 @@
                  
 
       </td>
-    
+          <td> 
 
-      <td>
-        <a class="btn btn-light"  href="{% url 'controlConsultas:listar_consultasd' consulta.id %}"> Ver detalles</a>
+        {{consulta.detalleConsulta}}
+                 
+
       </td>
-    
+            <td> 
+
+        {{consulta.medicamento}}
+                 
+
+      </td>
+
+ 
     
 
     {% endfor%}
