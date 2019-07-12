@@ -1,39 +1,51 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<div class="col"align="center" style="padding-bottom:1%">  
-    <h3>Listado de Dueños</h3>  
- </div>  
-<table class="table table-bordered">  
-	<thead class="thead-dark">  
-		<tr>
-			<th>No. Dueño</th>
-			<th>Nombres</th>
-			<th>Apellidos</th>
-			<th>Fecha de Nacimiento</th>
-			<th>Dirección</th>
-			<th>Telefono</th>
-			<th>Celular</th>
-			<th>Correo</th>
-		</tr>  
-	</thead> 
-	<tbody>  
-		{% if duenos %}
-		{% for dueno in duenos %}  
-		<tr>  
-			<td>{{ dueno.id }}</td>  
-			<td>{{ dueno.nombres }}</td>  
-			<td>{{ dueno.apellidos }}</td>  
-			<td>{{ dueno.fechaNacDueno }}</td>
-			<td>{{ dueno.direccion }}</td>  
-			<td>{{ dueno.telefono }}</td>  
-			<td>{{ dueno.celular }}</td>
-			<td>{{ dueno.correo }}</td>
-		</tr>  
-		{% endfor %}
-		{% else %}
-		<<h1>No hay registros de dueños</h1>
-		{% endif %}  
-	</tbody>  
-</table>
+<div class="health-care" style="padding-top:2%; padding-bottom:0;" >
+	<div class="container" >
+		<div class="col"align="center" style="padding-bottom:1%">  
+			<h3>Listado de Dueños</h3>  
+		 </div>  
+		<table class="table table-bordered">  
+			<thead class="thead-dark">  
+				<tr>
+					<th>No. Dueño</th>
+					<th>Nombres</th>
+					<th>Apellidos</th>
+					<th>Fecha de Nacimiento</th>
+					<th>Dirección</th>
+					<th>Telefono</th>
+					<th>Celular</th>
+					<th>Correo</th>
+					<th>Opciones</th>
+				</tr>  
+			</thead> 
+			<tbody>  
+				{% if duenos %}
+				{% for dueno in duenos %}  
+				<tr>  
+					<td>{{ dueno.id }}</td>  
+					<td>{{ dueno.nombres }}</td>  
+					<td>{{ dueno.apellidos }}</td>  
+					<td>{{ dueno.fechaNacDueno }}</td>
+					<td>{{ dueno.direccion }}</td>  
+					<td>{{ dueno.telefono }}</td>  
+					<td>{{ dueno.celular }}</td>
+					<td>{{ dueno.correo }}</td>
+					<td>
+						<a class="btn btn-danger" href="{% url 'registroMascota:eliminar-dueno' dueno.cuenta.username %}">Eliminar</a>
+					</td>
+				</tr>  
+				{% endfor %}
+				{% else %}
+				<<h1>No hay registros de dueños</h1>
+				{% endif %}  
+			</tbody>  
+		</table>
+	</div>
+</div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath3" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath4" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
 {% endblock %}

@@ -47,14 +47,14 @@ def editar_vacu(request, num):
 		form=ControlVacuForm(request.POST, instance=vacuna)
 		if form.is_valid():
 			form.save()
-			return redirect('controlVacunas:index_vacu')
+			return redirect('controlVacunas:index_vacu3')
 	return render(request,'controlVacunas/registrar_vacuna.html', {'form':form})
 
 def eliminar_vacu(request, num):  
     vacu = ControlVacuna.objects.get(id=num) 
     if request.method=='POST':
     	vacu.delete()  
-    	return redirect('controlVacunas:index_vacu')
+    	return redirect('controlVacunas:index_vacu3')
     return render(request,'controlVacunas/eliminar_vacuna.html',{'vacu':vacu})
 
 def nueva_vacu(request):
@@ -62,7 +62,7 @@ def nueva_vacu(request):
         form=VacuForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('controlVacunas:index_vacu2')
+        return redirect('controlVacunas:index_vacu3')
     else:
         form=VacuForm()
     return render(request, 'controlVacunas/nueva_vacu.html', {'form':form})

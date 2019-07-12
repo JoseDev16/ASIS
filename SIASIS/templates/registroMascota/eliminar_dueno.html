@@ -1,18 +1,18 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<div class="health-care" style="padding-top:2%; padding-bottom:0;" >
+<div class="news" style="padding-top:2%; padding-bottom:0;" >
 	<div class="container"align="center">
 		<form method="post">
 			{% csrf_token %}
-			<h3>¿Desea eliminar el registro de la mascota {{ mascota.nombre }}?</h3>
+			<h3>¿Desea eliminar el registro del dueño {{ dueno.nombre }}?</h3>
 			<button class="btm btn-danger" type="submit">Sí eliminar</button>
-			<a class = "btn btn-default" href="{% url 'registroMascota:listar-mascota' %}">Cancelar</a>
+			<a class = "btn btn-default" href="{% url 'registroMascota:listar-dueno' %}">Cancelar</a>
 		</form>
 	</div>
 </div>
 <svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
-<path id="trianglePath3" d="M0 0 L50 100 L100 0 Z"></path>
-<path id="trianglePath4" d="M50 100 L100 40 L100 0 Z"></path>
+<path id="trianglePath1" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath2" d="M50 100 L100 40 L100 0 Z"></path>
 </svg>
 {% endblock %}

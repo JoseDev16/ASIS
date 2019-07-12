@@ -131,3 +131,9 @@ def mis_mascotas(request):
     contexto = {'expedientes': expediente}
     return render(request, 'registroMascota/mis_mascotas.html', contexto)
 
+def eliminar_dueno(request, id_dueno):
+    dueno = User.objects.get(username=id_dueno)
+    if request.method == 'POST':
+        dueno.delete()
+        return redirect('registroMascota:listar-dueno')
+    return render(request, 'registroMascota/eliminar_dueno.html', {'dueno': dueno})

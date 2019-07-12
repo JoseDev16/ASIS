@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.controlVacunas',
     'apps.gestionCliente',
     'apps.registroMascota',
+    'apps.perfilMascota',
 
 ]
 
@@ -131,3 +132,7 @@ LOGIN_REDIRECT_URL ='base'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

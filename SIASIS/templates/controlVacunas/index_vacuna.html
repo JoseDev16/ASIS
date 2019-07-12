@@ -13,7 +13,6 @@
 					<th>#</th>
 					<th>Fecha</th>  
 					<th>Dosis aplicada</th>  
-					<th>Tipo de Vacuna</th>  
 					<th>Siguiente vacunacion</th>
 				</tr>  
 			</thead> 
@@ -25,8 +24,7 @@
 				<tr>  
 					<td>{{ vacu.id }}</td>
 					<td>{{ vacu.fechaAplicacionVac }}</td>  
-					<td>{{ vacu.cantDosis }}</td>  
-					<td>{{ desp.desparasitante.nombreDesparasitante }}</td>
+					<td>{{ vacu.cantDosis }}</td>
 					<td>{{ vacu.fechaProxVac  }}</td>  
 					<td>  
 						<a class="btn btn-primary" href="{% url 'controlVacunas:editar_vacu' vacu.id %}">Editar</a>
