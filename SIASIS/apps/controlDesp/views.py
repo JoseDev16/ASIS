@@ -1,91 +1,68 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponse,HttpResponseRedirect
+from apps.controlDesp.models import ControlDesparasitacion
+from apps.controlDesp.models import Desparasitante
+from apps.controlDesp.forms import DespForm
+from apps.controlDesp.forms import ControlDesparasitacionForm
+from apps.registroMascota.models import Expediente
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 import datetime
-from apps.controlDesp.models import Desparasitante
-from apps.controlDesp.models import ControlDesparasitacion
-from apps.controlDesp.forms import ControlDesparasitacionForm
-from apps.controlDesp.forms import DespForm
-from apps.registroMascota.models import Expediente
 
-def index_desp(request,x):
-	edicion=False
-	desparasitante=ControlDesparasitacion.objects.filter(expediente=x).order_by('id')
-	expediente = Expediente.objects.get(id=x)
+# Create your views here.
 
-	if request.method=='POST':
-		form=ControlDesparasitacionForm(request.POST)
-		if form.is_valid():
-			try:
-				instance = form.save(commit = False)
-				instance.expediente = expediente
-				instance.save()
-
-				return HttpResponseRedirect(reverse('controlDesp:index_desp',kwargs={'x':x}))
-			except:
-				pass
-		else:
-			form=ControlDesparasitacionForm()
-
-	return render(request, 'controlDesp/index_desp.html',{'vardesparasitante':desparasitante, 'edicion':edicion})
-
-def registrar_desp(request):
-	if request.method == 'POST':
-		form=ControlDesparasitacionForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('controlDesp:index_desp3')
-	else:
-		form=ControlDesparasitacionForm()
-	return render(request,'controlDesp/registrar_desp.html',{'form':form})
-
-def editar_desp(request, num):
-	desp=ControlDesparasitacion.objects.get(id=num)
-	if request.method=='GET':
-		form=ControlDesparasitacionForm(instance=desp)
-	else:
-		form=ControlDesparasitacionForm(request.POST, instance=desp)
-		if form.is_valid():
-			form.save()
-			return redirect('controlDesp:index_desp')
-	return render(request,'controlDesp/registrar_desp.html', {'form':form})
-
-def eliminar_desp(request, num):  
-    desp = ControlDesparasitacion.objects.get(id=num) 
-    if request.method=='POST':
-    	desp.delete()  
-    	return redirect('controlDesp:index_desp')
-    return render(request,'controlDesp/eliminar_desp.html',{'desparasitante':desp})
-
-def nuevo_desp(request):
-	if request.method=='POST':
-		form=DespForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('controlDesp:index_desp')
-	else:
-		form=DespForm()
-	return render(request, 'controlDesp/nuevo_desp.html', {'form':form})
-
-
-def index_desp3(request):
-	edicion=False
-	desparasitante=ControlDesparasitacion.objects.all().order_by('id')
-	
-
-	if request.method=='POST':
-		form=ControlDesparasitacionForm(request.POST)
-		if form.is_valid():
-			try:
-				form.save()
-
-
-				return HttpResponseRedirect(reverse('controlDesp:index_desp3'))
-			except:
-				pass
-		else:
-			form=ControlDesparasitacionForm()
-
-	return render(request, 'controlDesp/index_desp.html',{'vardesparasitante':desparasitante, 'edicion':edicion})
+def index_desparasitacion(request,x):
+    edicion = False
+    desparasitaciones = ControlDesparasitacion.objects.filter(expediente=x).order_by('id')
+    ultDesparasitante = ControlDesparasitacion.objects.filter(expediente=x).order_by('id').last()
+    expediente=Expediente.objects.get(id=x)
+    if request.method == "POST":  
+        form = ControlDesparasitacionForm(request.POST)  
+        if form.is_valid():  
+            try:
+                instance = form.save(commit=False) 
+                instance.expediente = expediente
+                instance.save()
+                return HttpResponseRedirect(reverse('controlDesp:index-desparasitacion', kwargs={'x':x}))  
+            except Exception as e:   
+                form = ControlDesparasitacionForm() 
+                pass
+    else:  
+        form = ControlDesparasitacionForm()   
+    return render(request,'controlDesp/index_desp.html',{'vardesparasitaciones':desparasitaciones,'form':form, 'edicion':edicion, 'idmasc':expediente, 'ultDesparasitante':ultDesparasitante})
     
+def registrar_vacuna(request,x):
+    if request.method == "POST":  
+        form = DespForm(request.POST)  
+        if form.is_valid():  
+            try:  
+                form.save()  
+                return HttpResponseRedirect(reverse('controlDesp:index-desparasitacion', kwargs={'x':x})) 
+            except:  
+                pass  
+    else:  
+        form = DespForm()   
+    return render(request,'controlDesp/nuevo_desp.html',{'form':form, 'idmasc':x})
+    
+def editar_desparasitacion(request,x,num):
+    edicion = True
+    desparasitaciones = ControlDesparasitacion.objects.filter(expediente=x).order_by('id')
+    instancia = ControlDesparasitacion.objects.get(id=num)
+    expediente=Expediente.objects.get(id=x)
+    if request.method == "POST":
+        form = ControlDesparasitacionForm(request.POST,instance=instancia) 
+        if form.is_valid():  
+            try:                  
+                form.save()  
+                form = ControlDesparasitacionForm()
+                return HttpResponseRedirect(reverse('controlDesp:index-desparasitacion', kwargs={'x':x})) 
+            except:
+                pass
+    else:
+        form=ControlDesparasitacionForm(instance=instancia)
+    return render(request,'controlDesp/index_desp.html',{'vardesparasitaciones':desparasitaciones, 'form':form, 'edicion':edicion,'idmasc':expediente})
+    
+def eliminar_desparasitacion(request,x,num):  
+    valor = ControlDesparasitacion.objects.filter(expediente=x).get(id=num)  
+    valor.delete()  
+    return HttpResponseRedirect(reverse('controlDesp:index-desparasitacion', kwargs={'x':x}))

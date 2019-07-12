@@ -15,6 +15,7 @@ class CuentaForm(UserCreationForm):
 
 	class Meta:
 		model=User
+
 		fields = [
 			'username',
 			'first_name',
@@ -27,6 +28,7 @@ class CuentaForm(UserCreationForm):
 			'last_name':'Apellidos',
 			
 		}
+
 
 class MascotaForm(forms.ModelForm):
     class Meta:
@@ -55,14 +57,14 @@ class MascotaForm(forms.ModelForm):
         }
 
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'raza': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'sexo': forms.TextInput(attrs={'class': 'input','size' : 30}),
+            'nombre': forms.TextInput(attrs={'class': 'input','size' : 60}),
+            'raza': forms.TextInput(attrs={'class': 'input','size' : 60}),
+            'sexo': forms.TextInput(attrs={'class': 'input','size' : 60}),
             'fechaNacimiento': forms.TextInput(attrs={'type':'date','max':ahora}),
-            'razaPadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'razaMadre': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'peso': forms.NumberInput(attrs={'class': 'input','min': '0.00','step':'0.1','size' : 30}),
-            'dueñomascota':forms.Select(attrs={'class':'form-control','width':30}),
+            'razaPadre': forms.TextInput(attrs={'class': 'input','size' : 60}),
+            'razaMadre': forms.TextInput(attrs={'class': 'input','size' : 60}),
+            'peso': forms.TextInput(attrs={'class': 'input','type': 'float','min': '0.00','step':'0.1','size' : 60}),
+            'dueñomascota':forms.Select(attrs={'class':'form-control','width':60}),
         }
 
 class DueñoMascotaForm(forms.ModelForm):
@@ -94,9 +96,9 @@ class DueñoMascotaForm(forms.ModelForm):
 
         widgets = {
 
-            'direccion': forms.TextInput(attrs={'class': 'input','size' : 30}),
-            'telefono': forms.NumberInput(attrs={'class': 'input','size' : 30}),
-            'celular': forms.NumberInput(attrs={'class': 'input','size' : 30}),
+            'direccion': forms.TextInput(attrs={'class': 'input','size' : 60}),
+            'telefono': forms.TextInput(attrs={'type': 'int','size' : 60}),
+            'celular': forms.TextInput(attrs={'type': 'int','size' : 60}),
             'fechaNacDueno':forms.TextInput(attrs={'class':'input','type':'date',
                 'value':(date((ahora.year)-18,mes,dia)),'max':(date((ahora.year)-18,mes,dia))}),
             'correo':forms.EmailInput(),

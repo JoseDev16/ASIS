@@ -5,7 +5,7 @@
 	<div class="container" style="background-color:rgba(255, 255, 255, 0.2);" >
     	<div class="col" align="center" style="padding-bottom:1%"> 
 	
-    	<h2>Fecha proxima vacunacion: ##/##/##</h2>
+    	<h2>Fecha proxima vacunacion: {{ultVacu.fechaProxVac}}</h2>
     	<h3>Control de vacunacion</h3> 
 		<table class="table table-bordered">  
 			<thead class="thead-dark">  
@@ -27,8 +27,8 @@
 					<td>{{ vacu.cantDosis }}</td>
 					<td>{{ vacu.fechaProxVac  }}</td>  
 					<td>  
-						<a class="btn btn-primary" href="{% url 'controlVacunas:editar_vacu' vacu.id %}">Editar</a>
-						<a class="btn btn-danger" href="{% url 'controlVacunas:eliminar_vacu' vacu.id %}">Eliminar</a>
+						<a class="btn btn-primary" href="{% url 'controlVacunas:editar_vacu' x=idmasc.id num=vacu.id %}#new">Editar</a>
+						<a class="btn btn-danger" href="{% url 'controlVacunas:eliminar_vacu' x=idmasc.id num=vacu.id %}">Eliminar</a>
 					</td>  
 				</tr>  
 			{% endfor %}
@@ -36,12 +36,38 @@
 				
 			</tbody>  
 		</table>
-		<div class="col"align="center" style="padding-bottom:1%">
-			<a class="btn btn-primary" href="{% url 'controlVacunas:registrar_vacu' %}">Agregar Vacunacion</a>
-		</div>
-		<div class="col"align="center" style="padding-bottom:1%">
-			<a class="btn btn-primary" href="{% url 'controlVacunas:nueva_vacu' %}">Crear nueva vacuna</a>
-		</div>
 	</div>
 </div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath3" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath4" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
+<div class="news" id="new" style="padding-top:100px">
+	<div class="container"align="center">
+		<form method="post">
+		    <div class="col">  
+				<h3>
+				{% if edicion %}
+				Editar Vacunación
+				{% else %}
+				Ingresar Vacunación
+				{% endif %}
+				</h3>  
+			</div>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class="btn btn-primary" type="submit">Guardar</button>
+		</form>
+	</div>
+	<div class="col"align="center" style="padding-bottom:1%">
+		<a class="btn btn-primary" href="{% url 'controlVacunas:nueva_vacu' idmasc.id %}">Crear nueva vacuna</a>
+	</div>
+<div style="padding-left:10%; padding-top 5%;">
+<a href="{%url 'registroMascota:listar_expedientes'%}">< Regresar al listado </a>
+</div>
+</div>
+<svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+<path id="trianglePath1" d="M0 0 L50 100 L100 0 Z"></path>
+<path id="trianglePath2" d="M50 100 L100 40 L100 0 Z"></path>
+</svg>
 {% endblock %}

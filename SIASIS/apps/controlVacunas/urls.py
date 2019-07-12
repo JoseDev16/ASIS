@@ -9,9 +9,9 @@ urlpatterns = [
 	path('', index_vacu3, name="index_vacu3"),
 	path('index_vacuna/<int:x>', index_vacu, name="index_vacu2"),
     path('registrar_vacuna/', registrar_vacu, name="registrar_vacu"),
-    path('editar_vacuna/<int:num>', editar_vacu, name="editar_vacu"),
-    path('eliminar_vacuna/<int:num>',eliminar_vacu,name="eliminar_vacu"),
-    path('nueva_vacu/',nueva_vacu,name="nueva_vacu"),
+    path('editar_vacuna/<int:x>/<int:num>', editar_vacu, name="editar_vacu"),
+    path('eliminar_vacuna/<int:x>/<int:num>',eliminar_vacu,name="eliminar_vacu"),
+    path('nueva_vacu/<int:x>',nueva_vacu,name="nueva_vacu"),
     #path('index_vac/', index_vacu3, name="index_vacu3"),
 
 ]
