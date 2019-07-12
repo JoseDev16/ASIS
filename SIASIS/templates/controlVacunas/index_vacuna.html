@@ -48,9 +48,9 @@
 		    <div class="col">  
 				<h3>
 				{% if edicion %}
-				Editar celo
+				Editar Vacunación
 				{% else %}
-				Ingresar celo
+				Ingresar Vacunación
 				{% endif %}
 				</h3>  
 			</div>
@@ -62,6 +62,9 @@
 	<div class="col"align="center" style="padding-bottom:1%">
 		<a class="btn btn-primary" href="{% url 'controlVacunas:nueva_vacu' idmasc.id %}">Crear nueva vacuna</a>
 	</div>
+<div style="padding-left:10%; padding-top 5%;">
+<a href="{%url 'registroMascota:listar_expedientes'%}">< Regresar al listado </a>
+</div>
 </div>
 <svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
 <path id="trianglePath1" d="M0 0 L50 100 L100 0 Z"></path>
