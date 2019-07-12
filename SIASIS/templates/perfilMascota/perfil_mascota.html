@@ -1,11 +1,10 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<div class="news" style="padding-top:10px">
-	<div class="container" >
-		<h2 style="text-align:center;">Perfil de Mascota</h2>
-		<div class="row" align="center">
-		<table class="col-sm-6">  
-			<br>  
+<div class="news" style="padding-top:0px;">
+	<div class="container" style="background-color:rgba(255,255,255,0.75);">
+		<h2 style="text-align:center;padding-top:2%">Perfil de {{ mascota.nombre }} </h2>
+		<div class="row col-sm-6" style="padding-left:5%; padding-top:1.5%; padding-bottom:4%">
+		<table >  
 			<tr>
 				<th style="text-align:right;">
 					<h3>Datos de la Mascota</h3>
@@ -13,17 +12,11 @@
 				</th>
 			</tr>
 			<tr>   
-				<td style="text-align:right; padding-right:15px;"><label>Nombre:</label></td>  
-				<td>  
-				  {{ mascota.nombre }}  
-				</td>  
-			</tr>  
-			<tr>   
 				<td style="text-align:right; padding-right:15px;"><label>Raza:</label></td>  
 				<td>  
 				  {{ mascota.raza }}  
 				</td>  
-			</div>  
+			</tr>  
 			<tr>   
 				<td style="text-align:right; padding-right:15px;"><label>Sexo:</label></td>  
 				<td>  
@@ -57,7 +50,7 @@
 		</table>
 		<table>
 			<tr>
-				<th style="text-align:right;">
+				<th style="text-align:right;padding-top:8%">
 					<h3>Próximos eventos</h3>
 					<br>
 				</th>
@@ -88,10 +81,15 @@
 			</tr>  
 		</table>
 		</div>
-		<br>
-		<br>
-		< Volver al inicio 
+		<div class="col-sm-6" style="padding:7.5%" align="center">
+			{% load static %}
+			<img src="{% static "images/asis.png" %}" style="max-width:300px;" alt="My image">
+		</div>
 	</div>  
+	<br>
+	<div style="padding-left:7%">
+	<a href="{%url 'registroMascota:mis_mascotas'%}">< Volver</a>
+	</div>
 </div>
 <svg id="bigTriangleShadow" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
 <path id="trianglePath1" d="M0 0 L50 100 L100 0 Z"></path>

@@ -20,7 +20,7 @@
     </head>
 <body>
 <!--start-header-->
-<div id="home" class="header" style="min-height:391px;" >
+<div id="home" class="header" style="min-height:200px;" >
         <div class="top-header">
             <div class="container">
                 <div class="logo">
@@ -32,18 +32,18 @@
                   {% if user.is_authenticated and user.is_superuser %}
                     
                     <ul class="cl-effect-16">
-                      <li><a data-hover="Bienvenido Dr.">Bienvenido Dr. {{ user.username }}</a></li>
+                      <li><a href="/home" data-hover="Bienvenido Dr. {{ user.username }}">Bienvenido Dr. {{ user.username }}</a></li>
                       <li><a href="{%url 'registroMascota:listar_expedientes'%}" data-hover="Ver expedientes">Ver expedientes</a></li>
                       
-                      <li><a href="{%url 'registroMascota:registrar-due'%}" data-hover="Mis mascotas">Registrar Cliente</a></li>
-                      <li><a href="{%url 'registroMascota:registrar-mascota'%}" data-hover="Mis mascotas">Registrar Mascota</a></li>
+                      <li><a href="{%url 'registroMascota:registrar-due'%}" data-hover="Registrar Cliente">Registrar Cliente</a></li>
+                      <li><a href="{%url 'registroMascota:registrar-mascota'%}" data-hover="Registrar Mascota">Registrar Mascota</a></li>
                       <li><a href="/logout" data-hover="Salir">Salir</a></li>
 
                       <div class="clearfix"></div>
                     </ul>
                   {% elif user.is_authenticated and user.is_superuser == 0  %}
                     <ul class="cl-effect-16">
-                      <li><a  data-hover="Bienvenido "> Bienvenido {{ user.username }} </a></li>
+                      <li><a href="/home" data-hover="Bienvenido {{ user.username }}"> Bienvenido {{ user.username }} </a></li>
                       <li><a href="{%url 'registroMascota:mis_mascotas'%}" data-hover="Mis mascotas">Mis mascotas</a></li>
                       <li><a href="/logout" data-hover="Salir">Salir</a></li>
                       <div class="clearfix"></div>
@@ -79,7 +79,7 @@
             <div id="top" class="callbacks_container">
             <ul class="rslides callbacks callbacks1" id="slider4">
                 <li id="callbacks1_s0" class="callbacks1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out;">
-                    <div class="banner-info" style="margin-top=2 em">
+                    <div class="banner-info" style="margin-top:4%; margin-bottom:4%">
                     <h3>Expediente Mascota</h3>
                     <h4>Controles y consultas</h4>
                     </div>
@@ -129,16 +129,8 @@
 			{% block content %}
 			{% endblock %}
 <!--footer-->
-<div class="footer text-center">
+<div class="footer text-center" style="padding-top:7em;">
     <div class="container">
-        <ul class="social-icons">
-            <li> <a class="tooltips" href="#"><img src="images/fb.png" title="facebook" /><span>Follow us for all the latest news</span></a></li>
-            <li> <a class="tooltips" href="#"><img src="images/twt.png" title="twitter" /><span>Follow us for all the latest news</span></a></li>
-            <li> <a class="tooltips" href="#"><img src="images/tube.png" title="tube" /><span>Follow us for all the latest news</span></a></li>
-            <li> <a class="tooltips" href="#"><img src="images/in.png" title="linkedin" /><span>Follow us for all the latest news</span></a></li>
-            <li class="pin"> <a class="tooltips" href="#"><img src="images/pin.png" title="pinterest" /><span>Follow us for all the latest news</span></a></li>
-            <div class="clearfix"> </div>
-        </ul>
         <div class="copy">
           <p>Copyright &copy; 2015 Petsy. All Rights Reserved. Design by <a href="http://w3layouts.com/">W3layouts</a> </p>
         </div>
