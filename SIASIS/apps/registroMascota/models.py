@@ -14,7 +14,7 @@ class DueñoMascota (models.Model):
     cuenta = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nombres
+        return self.nombres + " " + self.apellidos
 
 
 

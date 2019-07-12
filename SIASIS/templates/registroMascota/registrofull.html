@@ -1,15 +1,20 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<div class="health-care" style="padding-top:2%; padding-bottom:0;" >
+<div class="health-care" style="padding-top:2%; padding-bottom:0; background: #00CCCC" >
 	<div class="container"align="center">
-	<h2>Información del usuario</h2>
+	<h2>Informacion del usuario</h2>
 		<form method="post" style="padding-top:2em;">
 			{% csrf_token %}
-                {{form.as_p}}
-                <div style="padding:10px;">
-                    <button class="btn btn-primary" type="submit" name="btnGuardar" href= '/registro/registrar-mascota'>Guardar</button>
-                </div>
+			{% for field in form %}	
+				<div class="field_container row">
+					{{field.errors}}
+					{{field.label_tag}} </br>
+					{{field}}
+				</div>
+			{% endfor %}
+			
+			<button class="btn btn-primary" type="submit" name = 'btnGuardar'>Guardar</button>
 		</form>
 	</div>
 </div>
