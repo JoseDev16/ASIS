@@ -59,12 +59,12 @@ class MascotaForm(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'input','size' : 60}),
             'raza': forms.TextInput(attrs={'class': 'input','size' : 60}),
-            'sexo': forms.TextInput(attrs={'class': 'input','size' : 60}),
             'fechaNacimiento': forms.TextInput(attrs={'type':'date','max':ahora}),
             'razaPadre': forms.TextInput(attrs={'class': 'input','size' : 60}),
             'razaMadre': forms.TextInput(attrs={'class': 'input','size' : 60}),
             'peso': forms.TextInput(attrs={'class': 'input','type': 'float','min': '0.00','step':'0.1','size' : 60}),
             'dueñomascota':forms.Select(attrs={'class':'form-control','width':60}),
+            #'sexo': forms.ChoiceField(label="F", label="M",initial='M', widget=forms.Select(), required=True, is_hidden=False)
         }
 
 class DueñoMascotaForm(forms.ModelForm):
