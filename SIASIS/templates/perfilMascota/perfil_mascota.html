@@ -3,7 +3,7 @@
 <div class="news" style="padding-top:0px;">
 	<div class="container" style="background-color:rgba(255,255,255,0.75);">
 		<h2 style="text-align:center;padding-top:2%">Perfil de {{ mascota.nombre }} </h2>
-		<div class="row col-sm-6" style="padding-left:5%; padding-top:1.5%; padding-bottom:4%">
+		<div class="row col-sm-6" style="padding-left:10%; padding-top:1.5%; padding-bottom:4%">
 		<table >  
 			<tr>
 				<th style="text-align:right;">
@@ -81,14 +81,14 @@
 			</tr>  
 		</table>
 		</div>
-		<div class="col-sm-6" style="padding:7.5%" align="center">
+		<div class="col-sm-6" style="padding:25px" align="center">
+			<h3>Modifica la imagen de perfil de tu mascota.</h3>
 			{% load static %}
 			{% if imagenPerfil %}
-			<img src="{{imagenPerfil}}" style="max-width:300px;" alt="Imagen no disponible">
+			<img src="{{imagenPerfil}}" style="max-width:300px;" alt="imagen-perfil-{{id}}">
 		    {% endif %}
 			<br>
 			<div style="text-align:center;">
-			Modifica aquí la imagen de perfil de tu mascota.
 			</div>
 			<form method="post" enctype="multipart/form-data" action="{% url 'perfilMascota:perfil-mascota' id %}">
 				{% csrf_token %}
