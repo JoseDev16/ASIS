@@ -15,6 +15,7 @@
 			<th>Telefono</th>
 			<th>Celular</th>
 			<th>Correo</th>
+			<th>Opciones</th>
 		</tr>  
 	</thead> 
 	<tbody>  
@@ -29,6 +30,9 @@
 			<td>{{ dueno.telefono }}</td>  
 			<td>{{ dueno.celular }}</td>
 			<td>{{ dueno.correo }}</td>
+			<td>
+				<a class="btn btn-danger" href="{% url 'registroMascota:eliminar-dueno' dueno.cuenta.username %}">Eliminar</a>
+			</td>
 		</tr>  
 		{% endfor %}
 		{% else %}

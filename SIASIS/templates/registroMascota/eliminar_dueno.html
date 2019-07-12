@@ -1,12 +1,12 @@
-    {% extends 'base/base.html' %}
+{% extends 'base/base.html' %}
 
 {% block content %}
 	<div class="container"align="center">
 		<form method="post">
 			{% csrf_token %}
-			<h3>¿Desea eliminar el registro de la vacuna {{ vacu.instance.id }}?</h3>
+			<h3>¿Desea eliminar el registro del dueño {{ dueno.nombre }}?</h3>
 			<button class="btm btn-danger" type="submit">Sí eliminar</button>
-			<a class = "btm btn-default" href="{% url 'controlVacunas:index_vacu3' %}">Cancelar</a>
+			<a class = "btn btn-default" href="{% url 'registroMascota:listar-dueno' %}">Cancelar</a>
 		</form>
 	</div>
 	

@@ -34,7 +34,7 @@ def registrar_vacu(request):
 		form=ControlVacuForm(request.POST)
 		if form.is_valid():
 			form.save()
-		return redirect('controlVacunas:index_vacu3')
+		return redirect('controlVacunas:index_vacu')
 	else:
 		form=ControlVacuForm()
 	return render(request,'controlVacunas/registrar_vacuna.html',{'form':form})
