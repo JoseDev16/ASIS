@@ -6,7 +6,7 @@ class Consulta(models.Model):
     titulo = models.CharField(max_length = 100)
     detalleConsulta = models.TextField()
     medicamento = models.TextField()
-    proximaCita = models.DateField()
+    proximaCita = models.DateField(null=True)
     citaunica = models.BooleanField()
     expediente = models.ForeignKey(Expediente,null = True, blank = True, on_delete =models.CASCADE)
 
