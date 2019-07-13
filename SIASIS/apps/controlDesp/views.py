@@ -29,7 +29,7 @@ def index_desparasitacion(request,x):
                 pass
     else:  
         form = ControlDesparasitacionForm()   
-    return render(request,'controlDesp/index_desp.html',{'vardesparasitaciones':desparasitaciones,'form':form, 'edicion':edicion, 'idmasc':expediente, 'ultDesparasitante':ultDesparasitante})
+    return render(request,'controlDesp/index_desp.html',{'vardesparasitante':desparasitaciones,'form':form, 'edicion':edicion, 'idmasc':expediente, 'ultDesparasitante':ultDesparasitante})
     
 def registrar_vacuna(request,x):
     if request.method == "POST":  
@@ -60,7 +60,7 @@ def editar_desparasitacion(request,x,num):
                 pass
     else:
         form=ControlDesparasitacionForm(instance=instancia)
-    return render(request,'controlDesp/index_desp.html',{'vardesparasitaciones':desparasitaciones, 'form':form, 'edicion':edicion,'idmasc':expediente})
+    return render(request,'controlDesp/index_desp.html',{'vardesparasitante':desparasitaciones, 'form':form, 'edicion':edicion,'idmasc':expediente})
     
 def eliminar_desparasitacion(request,x,num):  
     valor = ControlDesparasitacion.objects.filter(expediente=x).get(id=num)  
